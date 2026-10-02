@@ -23,6 +23,6 @@
     <p>Opciones seleccionadas: <?= $p1Html ?> <?= $p2Html ?></p>
     <p>Casilla: <?= $casillaHtml ?></p>
     <p>El texto procesado es: <?= $textoHtml ?></p>
-    <p><a href="ej07-formulario.html">Volver al formulario</a></p>
+    <p><a href="ej08-formulario.html">Volver al formulario</a></p>
 </body>
 </html>
