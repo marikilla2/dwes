@@ -52,16 +52,16 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        $formulario = (int) $_GET['formulario'] ?? '';
+        $formulario = (int) $_GET['formulario'] ?? 0;
 
         $mensaje = match ($formulario) {
-            1 => 'lunes',
-            2 => 'martes',
-            3 => 'miercoles',
-            4 => 'jueves',
-            5 => 'viernes',
-            6,7 => 'Es fin de semana.',
-            default => 'Día no válido',
+            1 => ' lunes',
+            2 => ' martes',
+            3 => ' miercoles',
+            4 => ' jueves',
+            5 => ' viernes',
+            6,7 => ' Es fin de semana.',
+            default => ' Día no válido',
         };
     }  
     echo $mensaje;
