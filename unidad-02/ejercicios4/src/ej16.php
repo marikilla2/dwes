@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="" method="get">
         <input type="number" id="numero" name="numero" min="1" max="10" required>
         <button type="submit">Calcular</button>
     </form>
