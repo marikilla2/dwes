@@ -8,7 +8,7 @@ if ($enviado)
 {
     $numero = $_GET['numero'] ?? '';
 
-    if (is_string($numero) || !ctype_digit($numero))
+    if (!is_string($numero) || !ctype_digit($numero))
     {
         $error = 'Introduce un número válido';
     }
