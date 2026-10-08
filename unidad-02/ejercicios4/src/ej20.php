@@ -18,15 +18,21 @@
             $exp = (int)($_GET['exponente']);
             $suma = 1;
 
-            if($exp < 0){
+            if($base === false || $exp === false || $exp < 0){
                 echo "el exponente no puede ser un número negativo";
+                $error = true;
             }
 
             for($i = 0; $i < $exp; $i++){
                 $suma = $suma * $base;
             }
             echo "el número elevado es: " . $suma;
+
+            if($error){
+                echo "se ha producido un error especificado anteriormente";
+            }
         }
+
     ?>
 </body>
 </html>
