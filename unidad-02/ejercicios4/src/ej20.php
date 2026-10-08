@@ -25,7 +25,7 @@
             for($i = 0; $i < $exp; $i++){
                 $suma = $suma * $base;
             }
-            echo "la acumulación de números es: " . $suma;
+            echo "el número elevado es: " . $suma;
         }
     ?>
 </body>

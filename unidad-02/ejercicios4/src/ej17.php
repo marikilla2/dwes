@@ -8,27 +8,27 @@
 <body>
     <h1>Cuadricula del 1 al 5</h1>
 
-    <table style="border-collapse: collapse;">
-        <thead>
+    <table style="border-collapse: collapse; border: 1px solid black">
+        <thead style="border-collapse: collapse; border: 1px solid black">
             <tr>
                 <th scope="i">x</th>
-                <?php for ($i = 1; $i <= 5; $i++): ?>
-                    <th><?= $i ?></th>
-                <?php endfor; ?>
+                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                    <th style="border-collapse: collapse; border: 1px solid black"><?= $i ?></th>
+                <?php } ?>
             </tr>
         </thead>
         
-        <tbody>
+        <tbody style="border-collapse: collapse; border: 1px solid black">
             <th scope="j"> 
-                <?php for ($j = 1; $j <= 5; $j++): ?>
+                <?php for ($j = 1; $j <= 5; $j++) { ?>
                 <tr>
-                    <th><?= $j ?></th>
+                    <th style="border-collapse: collapse; border: 1px solid black"><?= $j ?></th>
 
-                    <?php for ($i = 1; $i <= 5; $i++): ?>
-                        <td><?= $j * $i ?></td>
-                            <?php endfor; ?>
+                    <?php for ($i = 1; $i <= 5; $i++) { ?>
+                        <td style="border-collapse: collapse; border: 1px solid black"><?= $j * $i ?></td>
+                            <?php } ?>
                 </tr>
-                <?php endfor; ?>
+                <?php } ?>
             </th>
         </tbody> 
     </table>
