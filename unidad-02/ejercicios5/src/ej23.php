@@ -1,15 +1,6 @@
 <?php
 
-$respuestas = [
-    "Sí",
-    "No",
-    "Probablemente",
-    "Es posible",
-    "No lo creo",
-    "Sin duda",
-    "Pregunta de nuevo",
-    "Todo apunta a que sí"
-];
+$respuestas = ["Sí","No","Probablemente","Es posible","No lo creo","Sin duda","Pregunta de nuevo","Todo apunta a que sí"];
 
 ?>
 
@@ -23,31 +14,36 @@ $respuestas = [
 <body>
     <form action="" method="post">
         <input type="text" name="pregunta">
-        <button type="submit">Preguntar</button>
+        <button type="submit" name="enviado">Preguntar</button>
     </form>
 </body>
 </html>
 
 <?php
-//Aquí comprobamos que sea el método post, quitamos espacios al principio y al final de la pregunta
-//Luego sacamos el indice aleatorio del array de respuestas y sacamos una respuesta
+    $enviado = $_SERVER['REQUEST_METHOD'] === 'POST';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($enviado) {
+        $pregunta = $_POST['pregunta'] ?? '';
+        $preguntaSinEspacios = trim($pregunta);
 
-    $pregunta = trim($_POST["pregunta"]);
-
-    if ($pregunta == "") {
-
-        echo "Error: debes escribir una pregunta.";
-
-    } else {
-
-        $indice = rand(0, count($respuestas) - 1);
-        $respuesta = $respuestas[$indice];
-
-        echo "<p>Pregunta: " . htmlspecialchars($pregunta) . "</p>";
-        echo "<p>Respuesta: $respuesta</p>";
+        if ($preguntaSinEspacios !== '') {
+            $respuestasNum = rand(0, count($respuestas) - 1);
+            $respuesta = $respuestas[$respuestasNum];
+            //Se puede hacer con un switch pero no es recomendable, mejor hacer la línea anterior
+        } else {
+            $error = "Debes escribir una pregunta.";
+        }
     }
-}
 
-?>
+    if ($enviado) {
+        if (isset($error)) {
+            echo "<p>" . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . "</p>";
+        } else {
+            echo "<p>Tu pregunta: " . htmlspecialchars($preguntaSinEspacios, ENT_QUOTES, 'UTF-8') . "</p>";
+            echo "<p>Respuesta: " . htmlspecialchars($respuesta, ENT_QUOTES, 'UTF-8') . "</p>";
+        }
+    }
+    ?>
+
+</body>
+</html>

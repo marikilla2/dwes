@@ -19,6 +19,11 @@
     echo count($arrayIndexado);
 
     $arrayIndexado[1] = "C";
+    
+    //Se puede hacer con array_push o calculando el último índice
+    //$indiceUltimo = count($arrayIndexado);
+
+    //$arrayIndexado[$indiceUltimo] = "Javascript";
 
     array_push($arrayIndexado, "Javascript");
 
