@@ -35,7 +35,6 @@
     foreach($arrayIndexado as $indice => $valor){ ?>
         <ul>
             <li><?= $indice ?>: <?= $valor ?></li>
-            <?= $indice ?>: <?= $valor ?>
         </ul>           
 <?php   }
 
