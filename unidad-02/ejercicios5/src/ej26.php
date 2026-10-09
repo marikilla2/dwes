@@ -37,9 +37,9 @@ echo '</tr>';
 
 foreach ($personas as $persona) {
     echo '<tr>';
-    echo '<td>' . htmlspecialchars($persona['nombre']) . '</td>';
-    echo '<td>' . htmlspecialchars($persona['altura']) . ' cm</td>';
-    echo '<td>' . htmlspecialchars($persona['email']) . '</td>';
+    echo '<td>' . htmlspecialchars($persona['nombre'], ENT_QUOTES, 'UTF-8') . '</td>';
+    echo '<td>' . htmlspecialchars($persona['altura'], ENT_QUOTES, 'UTF-8') . ' cm</td>';
+    echo '<td>' . htmlspecialchars($persona['email'], ENT_QUOTES, 'UTF-8') . '</td>';
     echo '</tr>';
 }
 
