@@ -24,9 +24,12 @@ foreach($arrays as $valor){
     } 
 }
 
+echo "El total de A es: " . $arrayAsociativo['A'] . "<br>";
+echo "El total de B es: " . $arrayAsociativo['B'] . "<br>";
+
 $total = $arrayAsociativo['A'] + $arrayAsociativo['B'];
 
-echo "Total: " . $total;
+echo "Total: " . $total . "<br>";
 
 if ($total == 50) {
     echo "La suma de los contadores es 50.";
