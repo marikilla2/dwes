@@ -61,7 +61,7 @@ echo '</table>';
 $precioMedio = $sumaPrecios / $totalProd;
 
 echo '<p>Total de productos: ' . $totalProd . '</p>';
-echo '<p>Precio medio: ' . number_format($precioMedio, 2, ',', '') . ' €</p>';
+echo '<p>Precio medio: ' . $precioMedio . ' €</p>';
 ?>
 
 </body>
