@@ -17,7 +17,7 @@
     $nombre = $_GET['nombre'] ?? "";
     $nota = $_GET['numero'] ?? "";
 
-    if ($nombre && $nota !== '') {
+    if (trim($nombre) && $nota !== '') {
 
         if ($nota >= 0 && $nota <= 10) {
             echo '<table border="1">';
@@ -29,7 +29,7 @@
             if ($nota >= 5) {
                 echo '<tr>';
                 echo '<td>';
-                echo "Está aprobado con nota " . " - " . htmlspecialchars($nombre);
+                echo "Está aprobado " . " - " . htmlspecialchars($nombre);
                 echo '</td>';
                 echo '<td>';
                 echo htmlspecialchars($nota);
@@ -38,7 +38,7 @@
             } else {
                 echo '<tr>';
                 echo '<td>';
-                echo "Está suspenso con nota " . " - " . htmlspecialchars($nombre);
+                echo "Está suspenso " . " - " . htmlspecialchars($nombre);
                 echo '</td>';
                 echo '<td>';
                 echo htmlspecialchars($nota);
