@@ -28,13 +28,17 @@
         ]
 
 ];
+    //$menus as $menu por $menus as $indice => $menu
+        foreach($menus as $indice => $menu){
+            echo '<h1> MENU';
+            echo ($indice + 1);
+            echo '</h1>';
+            foreach($menu as $tipo => $plato){
+                echo '<p>'. htmlspecialchars($tipo, ENT_QUOTES, 'UTF-8') .'</p>';
+                echo '<p>'. htmlspecialchars($plato, ENT_QUOTES, 'UTF-8') .'</p>';
+            }
+        }
 
-foreach($menus as $menu){
-    foreach($menu as $tipo => $plato){
-         echo '<p>'. htmlspecialchars($tipo, ENT_QUOTES, 'UTF-8') .'</p>';
-         echo '<p>'. htmlspecialchars($plato, ENT_QUOTES, 'UTF-8') .'</p>';
-    }
-}
         $menu = $menus[0];
 
         print_r(array_keys($menu));

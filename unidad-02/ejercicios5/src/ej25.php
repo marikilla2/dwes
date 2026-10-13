@@ -27,8 +27,8 @@
     echo '<tr>';
 
     foreach($alturas as $nombre => $altura){
-        echo '<td>'. htmlspecialchars($nombre) .'</td>';
-        echo '<td>'. htmlspecialchars($altura) .'</td>';
+        echo '<td>'. htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') .'</td>';
+        echo '<td>'. htmlspecialchars($altura, ENT_QUOTES, 'UTF-8') .'</td>';
         $suma += $altura;
         echo '</tr>';
     }
