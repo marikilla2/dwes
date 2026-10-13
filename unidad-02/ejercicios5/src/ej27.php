@@ -13,16 +13,26 @@
 
     for($i = 0; $i<$cantidad; $i++){
         echo '<pre>';
-        var_dump($frutas[$i]);
+        echo $i; echo "->";
+        echo $frutas[$i];
         echo '</pre>';
     }
 
     print_r($frutas); echo '<br>';
 
+    var_dump($frutas);
+
     $frutas[2] = 'naranja';
     $frutas[] = 'plátano';
 
     array_push($frutas, 'kiwi');
+
+    for($i = 0; $i<(count($frutas)); $i++){
+        echo '<pre>';
+        echo $i; echo "->";
+        echo $frutas[$i];
+        echo '</pre>';
+    }
 
     //$ultimoIndice = $frutas[$cantidad - 1];
     array_pop($frutas);
