@@ -10,7 +10,7 @@
     $arrays = [];
 
     for($i = 0; $i < 50; $i++){
-        $array = rand(0, 1);
+        //$array = rand(0, 1);
         
         if(rand(0, 1) == 0){
             $arrays[] = 'A';
@@ -18,6 +18,11 @@
             $arrays[] = 'B';
         }
     }
+    foreach($arrays as $valor){
+        echo $valor;
+    }
+
+    echo '<br>';
 
     $arrayAsociativo = [
         'A' => 0,
@@ -30,6 +35,7 @@
         } else {
             $arrayAsociativo['B']++;
         } 
+        //$arrayAsociativo[$valor]++; <- accedemos a su posicion con []
     }
 
     echo "El total de A es: " . $arrayAsociativo['A'] . "<br>";

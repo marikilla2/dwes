@@ -9,23 +9,23 @@
     <?php
         $menus = [
 
-    [
-        'primero' => 'Ensaladilla rusa',
-        'segundo' => 'Pollo asado con patatas',
-        'postre' => 'Flan de huevo'
-    ],
+        [
+            'primero' => 'Ensaladilla rusa',
+            'segundo' => 'Pollo asado con patatas',
+            'postre' => 'Flan de huevo'
+        ],
 
-    [
-        'primero' => 'Salmorejo cordobés',
-        'segundo' => 'Merluza al horno',
-        'postre' => 'Tarta de queso'
-    ],
+        [
+            'primero' => 'Salmorejo cordobés',
+            'segundo' => 'Merluza al horno',
+            'postre' => 'Tarta de queso'
+        ],
 
-    [
-        'primero' => 'Croquetas de jamón',
-        'segundo' => 'Solomillo de cerdo con salsa',
-        'postre' => 'Arroz con leche'
-    ]
+        [
+            'primero' => 'Croquetas de jamón',
+            'segundo' => 'Solomillo de cerdo con salsa',
+            'postre' => 'Arroz con leche'
+        ]
 
 ];
 

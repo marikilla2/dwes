@@ -26,7 +26,7 @@
 
     //$ultimoIndice = $frutas[$cantidad - 1];
     array_pop($frutas);
-    //Ponemos count($frutas para que se actualice el valor de frutas)
+    //Ponemos count($frutas) para que se actualice el valor de frutas
     echo $frutas[count($frutas) - 1]; echo '<br>';
 
     print_r($frutas); echo '<br>';
