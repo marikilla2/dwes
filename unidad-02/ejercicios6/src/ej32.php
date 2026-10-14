@@ -24,10 +24,21 @@
     </form>
 
     <?php
-        $precio = $_POST['precio'];
-        $porcentaje = $_POST['porcentaje'];
-        $resultado = descuento($precio, $porcentaje);
-        echo "El precio final es: " . $resultado;
+    $enviado = $_SERVER['REQUEST_METHOD'] === 'POST';
+
+    if($enviado){
+        $precio = (int) $_POST['precio'];
+        $porcentaje = (int) $_POST['porcentaje'];
+        if($precio < 0 || $precio > 100){
+            echo "Error, no está en el rango entre 0 y 100";
+        }else{
+            $resultado = descuento($precio, $porcentaje);
+            echo "El precio final es: " . $resultado;
+        }
+        
+        
+    }
+        
     ?>
 </body>
 </html>

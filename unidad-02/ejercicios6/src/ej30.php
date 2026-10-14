@@ -8,6 +8,7 @@ function aplicarDescuento(float $precio, float $porcentaje = 10) : float
 $precioInicial = 100;
 $descuentoInicial = 30;
 $porcentajeIn = 10;
+//Guardar los resultados de funciones en una variable fuera del html
 ?>
 
 <!DOCTYPE html>

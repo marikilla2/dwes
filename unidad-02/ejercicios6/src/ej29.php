@@ -2,10 +2,11 @@
 
 function saludar(string $nombre): string
 {
-    return 'Hola ' . $nombre;
+    return 'Hola ' . $nombre . 'Bienvenido/a';
 }
 //Definir una función es darle forma y llamarla es ejecutarla, 
-//un parámetro sería nombre y un argumento sería de saludar Ana por ejemplo
+//un parámetro sería nombre y un argumento sería de saludar a Ana por ejemplo
+//Guardar los resultados de funciones en una variable fuera del html
 ?>
 <!DOCTYPE html>
 <html lang="en">

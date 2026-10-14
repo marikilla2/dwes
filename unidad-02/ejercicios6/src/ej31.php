@@ -25,7 +25,7 @@ function contarMayoresQue(array $nums, int $limite) : int
 }
 
 // Si calcular media estuviera vacío daría error porque es necesario un parámetro obligatorio
-
+//Guardar los resultados de funciones en una variable fuera del html
 ?>
 
 <!DOCTYPE html>
@@ -36,14 +36,15 @@ function contarMayoresQue(array $nums, int $limite) : int
     <title>Document</title>
 </head>
 <body>
+    <!-- lista de 5 números para probar-->
     <?php
         $array = [6,8];
-        $variable = calcularMedia($array);
-        echo $variable . " ";
+        $media = calcularMedia($array);
+        echo $media . " ";
         echo "Otro ejercicio: ";
 
-        $var = contarMayoresQue($array, 7);
-        echo $var;
+        $mayorQue = contarMayoresQue($array, 7);
+        echo $mayorQue;
     ?>
 </body>
 </html>
