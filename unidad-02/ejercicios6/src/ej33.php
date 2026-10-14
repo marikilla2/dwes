@@ -1,43 +1,57 @@
+
 <?php
-declare(strict_types = 1);
+//declare(strict_types = 1);
 
 $menu = [
     'primero' => 'Ensalada mediterránea',
     'segundo' => 'Pescado con patatas'
 ];
-function agregarPostre(array $menu, string $postre) : array
-{
-    $menu['postre'] = $postre;
-    return $menu;
 
-};
+function agregarPostre(array $menu, string $postre): array
+{
+    $menuAmpliado = $menu;
+    $menuAmpliado['postre'] = $postre;
+
+    return $menuAmpliado;
+}
 
 function agregarBebida(array &$menu, string $bebida): void
 {
     $menu['bebida'] = $bebida;
-};
-
-
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menús</title>
 </head>
 <body>
     <?php
-        $array = agregarPostre($menu, 'Arroz con leche');
-        foreach($array as $ar){
-            echo $ar . '<br>';
-        };
+    // Añadimos una bebida modificando el menú original.
+    agregarBebida($menu, 'Agua');
 
-        agregarBebida($menu, 'Aquarius');
-        foreach($menu as $menus){
-            echo $menus . '<br>';
-        }
+    echo '<h2>Menú original modificado</h2>';
+
+    foreach ($menu as $tipo => $plato) {
+        echo $tipo . ': ' . $plato . '<br>';
+    }
+
+    // Creamos un nuevo menú con postre.
+    $menuConPostre = agregarPostre($menu, 'Flan');
+
+    echo '<h2>Menú ampliado con postre</h2>';
+
+    foreach ($menuConPostre as $tipo => $plato) {
+        echo $tipo . ': ' . $plato . '<br>';
+    }
+
+    echo '<h2>Menú original después de añadir el postre</h2>';
+
+    foreach ($menu as $tipo => $plato) {
+        echo $tipo . ': ' . $plato . '<br>';
+    }
     ?>
 </body>
 </html>
