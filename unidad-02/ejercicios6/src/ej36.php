@@ -2,6 +2,10 @@
 function duplicar(int $numero): int {
     return $numero * 2;
 }
+
+$funcion = 'duplicar';
+$numero = 5;
+
 $triplicar = function (int $numero): int {
     return $numero * 3;
 };
@@ -9,7 +13,7 @@ $triplicar = function (int $numero): int {
 $incremento = 4;
 
 $sumarIncremento = fn(int $numero): int => $numero + $incremento;
-
+//$sumar = fn(int $numero) : int => $numero + $incremento;
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +25,14 @@ $sumarIncremento = fn(int $numero): int => $numero + $incremento;
 </head>
 <body>
     <?php
-
-        $funcion = 'duplicar';
-        $numero = 5;
-
-        echo "Duplicar: " . $funcion($numero) . "<br>";
+        $duplicar = $funcion($numero);
+        $tri = $triplicar($numero);
+        $sumar = $sumarIncremento($numero);
+        echo "Duplicar: " . $duplicar . "<br>";
         
-        echo "Triplicar: " . $triplicar($numero) . "<br>";
-        
-        echo "Sumar incremento: " . $sumarIncremento($numero) . "<br>";
+        echo "Triplicar: " . $tri . "<br>";
+
+        echo "Sumar incremento: " . $sumar . "<br>";
     ?>
 </body>
 </html>
