@@ -70,12 +70,12 @@ $cadenasTest = ['20', '0', '-3', '12.5', '', '12,5'];
 
     <ul>
         <li>
-            <strong>¿Por qué <code>'20'</code> es numérico pero no tiene tipo <code>int</code>?</strong><br>
-            Su tipo de dato real es <code>string</code> (cadena de texto) porque está delimitado por comillas. La función <code>is_numeric()</code> evalúa si el <em>contenido</em> de la cadena puede interpretarse como un número válido para realizar operaciones matemáticas, dando <code>true</code>. Sin embargo, su tipo subyacente según el sistema de tipos de PHP sigue siendo una cadena de texto, no un entero (<code>int</code>).
+            ¿Por qué '20' es numérico pero no tiene tipo int ?<br>
+            Su tipo de dato real es string (cadena de texto) porque está delimitado por comillas. La función is_numeric() evalúa si el contenido de la cadena puede interpretarse como un número válido para realizar operaciones matemáticas, dando true. Sin embargo, su tipo subyacente según el sistema de tipos de PHP sigue siendo una cadena de texto, no un entero (int).
         </li>
         <li>
-            <strong>¿Por qué <code>'-3'</code> es numérico pero no está formado exclusivamente por dígitos?</strong><br>
-            <code>is_numeric()</code> reconoce <code>'-3'</code> como un número válido porque el signo menos (<code>-</code>) forma parte de la notación de números enteros negativos. En cambio, <code>ctype_digit()</code> únicamente devuelve <code>true</code> si **todos y cada uno** de los caracteres del string son dígitos numéricos simples (del <code>0</code> al <code>9</code>). Como el guion <code>-</code> es un carácter de puntuación/signo y no un dígito puro, <code>ctype_digit('-3')</code> devuelve <code>false</code>.
+            ¿Por qué '-3' es numérico pero no está formado exclusivamente por dígitos?<br>
+            is_numeric() reconoce '-3' como un número válido porque el signo menos (-) forma parte de la notación de números enteros negativos. En cambio, ctype_digit() únicamente devuelve true si **todos y cada uno** de los caracteres del string son dígitos numéricos simples (del 0 al 9). Como el guion - es un carácter de puntuación/signo y no un dígito puro, type_digit('-3')devuelve false.
         </li>
     </ul>
 

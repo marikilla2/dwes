@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Enviar</button>
     </form>
 
-    <?php if ($procesado): ?>
+    <?php if ($procesado) {?>
         <hr>
         <h3>Resultado del Procesamiento</h3>
 
-        <?php if ($mensajeError !== null): ?>
+        <?php if ($mensajeError !== null) { ?>
             <p style="color: red;"><strong>Error:</strong> <?= e($mensajeError) ?></p>
-        <?php else: ?>
+        <?php } else { ?>
             <p style="color: green;"><strong>Edad válida registrada: </strong> <?= e($edadInt) ?> años</p>
             
             <h4>Comprobación de tipos con var_dump():</h4>
@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Dato convertido a entero ((int)):
             <?php var_dump($edadInt); ?>
             </pre>
-        <?php endif; ?>
-    <?php endif; ?>
+        <?php } ?>
+    <?php }  ?>
 
     <hr>
 
