@@ -59,10 +59,9 @@
                     $baseTexto = ($valorDescuento > 0) ? " · Base: " . formatearPrecio($base) : "";
 
                     $resultadoLinea = "Subtotal: " . formatearPrecio($subtotal) . 
-                                    " · Descuento: " . formatearPrecio($valorDescuento) . 
-                                    $baseTexto . 
-                                    " · IVA: " . formatearPrecio($iva) . 
-                                    " · Total: " . formatearPrecio($total);
+                                    " Descuento: " . formatearPrecio($valorDescuento) . $baseTexto . 
+                                    " IVA: " . formatearPrecio($iva) . 
+                                    " Total: " . formatearPrecio($total);
 
                     echo $resultadoLinea . '<br>';
                     echo "Observaciones: " . htmlspecialchars($observaciones) . '<br>';

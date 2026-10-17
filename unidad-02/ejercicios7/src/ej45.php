@@ -48,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h3>Resultado del Procesamiento</h3>
 
         <?php if ($mensajeError !== null) { ?>
-            <p style="color: red;"><strong>Error:</strong> <?= e($mensajeError) ?></p>
+            <p><strong>Error:</strong> <?= e($mensajeError) ?></p>
         <?php } else { ?>
-            <p style="color: green;"><strong>Edad válida registrada: </strong> <?= e($edadInt) ?> años</p>
+            <p><strong>Edad válida registrada: </strong> <?= e($edadInt) ?> años</p>
             
             <h4>Comprobación de tipos con var_dump():</h4>
             <pre>
@@ -69,16 +69,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p>A continuación se evalúa el comportamiento de PHP al forzar la conversión de diferentes tipos de datos mediante <code>var_dump()</code>:</p>
 
     <pre>
-        1. Convertir 'hola' a int -> (int) 'hola':
+        Convertir 'hola' a int -> (int) 'hola':
         <?php var_dump((int) 'hola'); ?>
 
-        2. Convertir 12.9 a int -> (int) 12.9:
+        Convertir 12.9 a int -> (int) 12.9:
         <?php var_dump((int) 12.9); ?>
 
-        3. Convertir '12.5' a float -> (float) '12.5':
+        Convertir '12.5' a float -> (float) '12.5':
         <?php var_dump((float) '12.5'); ?>
 
-        4. Convertir 20 a string -> (string) 20:
+        Convertir 20 a string -> (string) 20:
         <?php var_dump((string) 20); ?>
     </pre>
 
