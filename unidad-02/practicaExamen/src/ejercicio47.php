@@ -30,12 +30,12 @@ $promedio   = $sumaTotal / $cantidad;
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($tiradas as $indice => $valor): ?>
+            <?php foreach ($tiradas as $indice => $valor) {?>
                 <tr>
                     <td>Lanzamiento <?= $indice + 1 ?></td>
                     <td><?= $valor ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php } ?>
 
             <tr class="resumen">
                 <td>Dado más bajo (min)</td>
