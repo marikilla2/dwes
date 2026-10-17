@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         echo nl2br(htmlspecialchars($texto, ENT_QUOTES, 'UTF-8'));
         echo '<br><br><a href="">Volver</a>';
-        exit;
     }
     
     echo '<p style="color:red;">Error: El campo no es válido o está vacío.</p>';

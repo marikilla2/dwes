@@ -25,10 +25,8 @@ function evaluarArchivo(string $nombreArchivo) {
     echo "- Termina en '.php' o '.html': $termina\n\n";
 }
 
-// 1. Prueba con 'ejercicio.php'
 evaluarArchivo('ejercicio.php');
 
-// 2. Prueba con 'Ejercicio.PHP'
 evaluarArchivo('Ejercicio.PHP');
 
 ?>
