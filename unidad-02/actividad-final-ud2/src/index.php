@@ -34,6 +34,7 @@
     </form>
 
     <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nombre = trim($_POST['nombre'] ?? "");
         $id = $_POST['desplegable'] ?? "";
         $cantidad = (int)($_POST['desplegable2'] ?? 0);
@@ -53,7 +54,7 @@
                     $iva = calcularIVA($base);
                     $total = $base + $iva;
 
-                    echo "<br>Cliente: " . htmlspecialchars($nombre) . '<br>';
+                    echo "<br>Cliente: " . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') . '<br>';
                     echo "Producto: " . htmlspecialchars($producto['nombre']) . ' compra ' . $cantidad . ' ' . strtolower($producto['nombre']) . '(s)<br>';
                     
                     $baseTexto = ($valorDescuento > 0) ? " · Base: " . formatearPrecio($base) : "";
@@ -64,10 +65,11 @@
                                     " Total: " . formatearPrecio($total);
 
                     echo $resultadoLinea . '<br>';
-                    echo "Observaciones: " . htmlspecialchars($observaciones) . '<br>';
+                    echo "Observaciones: " . htmlspecialchars($observaciones, ENT_QUOTES, 'UTF-8') . '<br>';
                 }
             }
         }
+    }
 
         include __DIR__ . '/pie.php';
     ?>
