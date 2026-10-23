@@ -2,7 +2,6 @@
 
 include __DIR__ . '/ej07.php';
 
-// 1. Cuenta principal con 100€
 $cuenta = new CuentaBancaria("Juan Pérez", 100.0);
 
 echo "Operación | ¿Acepta? | Saldo<br>";
@@ -23,11 +22,9 @@ probar($cuenta, 'Retirar', 120.0);
 
 echo "<br>--- Otras pruebas ---<br>";
 
-// 2. Cuenta sin saldo inicial
 $cuenta2 = new CuentaBancaria("María");
 echo "Saldo María: " . $cuenta2->getSaldo() . " €<br>";
 
-// 3. Saldo negativo (excepción)
 try {
     new CuentaBancaria("Carlos", -50.0);
 } catch (InvalidArgumentException $e) {
