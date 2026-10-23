@@ -28,7 +28,8 @@ class CuentaBancaria{
             return $this->saldo;
         }
 
-        function ingresar(float $importe): bool{
+        function ingresar(float $importe): bool
+        {
             if($importe > 0.0){
                 $this->saldo += $importe;
                 return true;
@@ -37,7 +38,8 @@ class CuentaBancaria{
             }
         }
 
-        function retirar(float $importe): bool{
+        function retirar(float $importe): bool
+        {
             if ($importe > 0.0 && $importe <= $this->saldo) {
                 $this->saldo -= $importe;
                 return true;

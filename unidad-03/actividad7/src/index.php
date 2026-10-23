@@ -6,7 +6,7 @@ $cuenta = new CuentaBancaria("Juan Pérez", 100.0);
 
 function probar(CuentaBancaria $cuenta, string $tipo, float $cantidad) {
     $ok = (strtolower($tipo) === 'ingresar') ? $cuenta->ingresar($cantidad) : $cuenta->retirar($cantidad);
-    $txtOk = $ok ? "Sí" : "No";
+    $txtOk = $ok ? "Aprobado" : "Rechazado";
     echo "$tipo $cantidad | $txtOk | " . $cuenta->getSaldo() . " €<br>";
 }
 
@@ -41,7 +41,7 @@ $cuenta2 = new CuentaBancaria("María");
 
         echo "Otra cuenta bancaria, a continuación detalles: " . "<br>";
         try {
-            new CuentaBancaria("Carlos", -50.0);
+            $nuevaCuenta = new CuentaBancaria("Carlos", -50.0);
         } catch (InvalidArgumentException $e) {
             echo "Error: " . $e->getMessage() . "<br>";
         }
