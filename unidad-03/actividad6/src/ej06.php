@@ -14,10 +14,10 @@ class Libro
         $tituloLimpio = trim($titulo);
         $autorLimpio = trim($autor);
 
-        if($tituloLimpio == ''){
+        if($tituloLimpio === ''){
             throw new InvalidArgumentException("El titulo no puede estar vacío");
         }
-        if($autorLimpio == ''){
+        if($autorLimpio === ''){
             throw new InvalidArgumentException("El autor no puede estar vacío");
         }
         if($paginas < 0){
@@ -30,19 +30,19 @@ class Libro
         
     }
 
-    function getTitulo(): string{
+    public function getTitulo(): string{
         return $this->titulo;
     }
         
-    function getAutor(): string {
+    public function getAutor(): string {
         return $this->autor;
     }
         
-    function getPaginas(): int{
+    public function getPaginas(): int{
         return $this->paginas;
     }
 
-    function obtenerFicha(): string
+    public function obtenerFicha(): string
     {
         return $this->titulo . " " . $this->autor . " " . $this->paginas;
     }
