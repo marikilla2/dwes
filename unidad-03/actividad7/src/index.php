@@ -23,25 +23,28 @@ $cuenta2 = new CuentaBancaria("María");
 </head>
 <body>
     <?php
-echo "Operación | ¿Acepta? | Saldo<br>";
-echo "---------------------------<br>";
+        echo "Cuenta de Juan Pérez". "<br>";
+        echo "Saldo inicial: 100". "<br>";
+        echo "Operación | ¿Acepta? | Saldo<br>";
+        echo "---------------------------<br>";
 
-probar($cuenta, 'Ingresar', 50.0);
-probar($cuenta, 'Retirar', 30.0);
-probar($cuenta, 'Retirar', 200.0);
-probar($cuenta, 'Ingresar', 0.0);
-probar($cuenta, 'Retirar', -10.0);
-probar($cuenta, 'Retirar', 120.0);
+        probar($cuenta, 'Ingresar', 50.0);
+        probar($cuenta, 'Retirar', 30.0);
+        probar($cuenta, 'Retirar', 200.0);
+        probar($cuenta, 'Ingresar', 0.0);
+        probar($cuenta, 'Retirar', -10.0);
+        probar($cuenta, 'Retirar', 120.0);
 
-echo "<br>--- Otras pruebas ---<br>";
+        echo "<br>--- Otras pruebas ---<br>";
 
-echo "Saldo María: " . $cuenta2->getSaldo() . " €<br>";
+        echo "Saldo de la cuenta de María: " . $cuenta2->getSaldo() . " €<br>";
 
-try {
-    new CuentaBancaria("Carlos", -50.0);
-} catch (InvalidArgumentException $e) {
-    echo "Error: " . $e->getMessage() . "<br>";
-}
+        echo "Otra cuenta bancaria, a continuación detalles: " . "<br>";
+        try {
+            new CuentaBancaria("Carlos", -50.0);
+        } catch (InvalidArgumentException $e) {
+            echo "Error: " . $e->getMessage() . "<br>";
+        }
     ?>
 </body>
 </html>

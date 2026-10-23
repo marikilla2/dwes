@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 class CuentaBancaria{
     private string $titular;
@@ -21,7 +22,7 @@ class CuentaBancaria{
     }
 
         function getTitular(): string{
-                return $this->titular;
+            return $this->titular;
         }
         function getSaldo(): float{
             return $this->saldo;
