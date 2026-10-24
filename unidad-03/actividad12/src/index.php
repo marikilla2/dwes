@@ -30,7 +30,7 @@ echo "Resumen Final: ";
 echo $miBiblioteca->contarLibros() . " libros y " . number_format($miBiblioteca->calcularValorTotal(), 2, ',', '.') . " €." . "<br>";
 
 /*
- * CUESTIÓN: ¿Por qué anadirLibro() no necesita crear otro objeto Libro?
+ * CUESTIÓN: Por qué anadirLibro() no necesita crear otro objeto Libro?
  * 
  * Explicación:
  * El método anadirLibro() recibe una instancia ya creada de la clase Libro a través de su parámetro tipado (Libro $libro). 
