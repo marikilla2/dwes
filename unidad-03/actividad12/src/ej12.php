@@ -80,4 +80,6 @@ class Biblioteca {
     }
 }
 
+//Podría haberlo hecho en diferentes archivos cada clase
+
 ?>

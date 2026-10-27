@@ -20,7 +20,7 @@ $miBiblioteca->anadirLibro($libro3);
 
 echo "Listado de Libros en la Biblioteca" . "<br>";
 echo "Título" . " | " . "Autor" . " | " . "Precio" . "<br>";
-
+//Esto era con una tabla de html directamente
 foreach ($miBiblioteca->getLibros() as $libro) {
     echo $libro->getTitulo() . " | " . $libro->getAutor()->getNombre() . " | " . number_format($libro->getPrecio(), 2, ',', '.') . " €" . "<br>";
 }

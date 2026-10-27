@@ -5,10 +5,6 @@ $autorAna = new Autor("Ana López");
 
 $libro1 = new Libro("Aprender PHP", 20.0, $autorAna);
 $libro2 = new Libro("Practicar PHP", 15.0, $autorAna);
-
-
-
-
 /*
  * CUESTIONARIOS Y RESPUESTAS:
  * 
@@ -50,6 +46,9 @@ $libro2 = new Libro("Practicar PHP", 15.0, $autorAna);
         echo "--- Tras intento fallido ---\n";
         echo "Libro 1 - Autor: " . $libro1->getAutor()->getNombre() . "<br>";
         echo "Libro 2 - Autor: " . $libro2->getAutor()->getNombre() . "<br>";
+
+        //Puedo hacerlo con foreach si lo añado a un array cada autor.
     ?>
+
 </body>
 </html>
