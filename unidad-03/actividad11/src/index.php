@@ -6,20 +6,7 @@ $autorAna = new Autor("Ana López");
 $libro1 = new Libro("Aprender PHP", 20.0, $autorAna);
 $libro2 = new Libro("Practicar PHP", 15.0, $autorAna);
 
-echo "Estado Inicial";
-echo "Libro: " . $libro1->getTitulo() . " | Precio: " . $libro1->getPrecio() . "€ | Autor: " . $libro1->getAutor()->getNombre() . "<br>";
-echo "Libro: " . $libro2->getTitulo() . " | Precio: " . $libro2->getPrecio() . "€ | Autor: " . $libro2->getAutor()->getNombre() . "<br>";
 
-$autorAna->setNombre("Ana López García");
-echo "--- Tras actualizar el nombre del autor ---\n";
-echo "Libro: " . $libro1->getTitulo() . " | Precio: " . $libro1->getPrecio() . "€ | Autor: " . $libro1->getAutor()->getNombre() . "<br>";
-echo "Libro: " . $libro2->getTitulo() . " | Precio: " . $libro2->getPrecio() . "€ | Autor: " . $libro2->getAutor()->getNombre() . "<br>";
-
-$resultadoCambio = $autorAna->setNombre("   ");
-echo "Intento de cambio a espacios vacíos: " . ($resultadoCambio ? "Aceptado" : "Rechazado") . "\n";
-echo "--- Tras intento fallido ---\n";
-echo "Libro 1 - Autor: " . $libro1->getAutor()->getNombre() . "<br>";
-echo "Libro 2 - Autor: " . $libro2->getAutor()->getNombre() . "<br>";
 
 
 /*
@@ -39,3 +26,30 @@ echo "Libro 2 - Autor: " . $libro2->getAutor()->getNombre() . "<br>";
  * por lo que no genera ninguna copia independiente.
  */
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        echo "Estado Inicial";
+        echo "Libro: " . $libro1->getTitulo() . " | Precio: " . $libro1->getPrecio() . "€ | Autor: " . $libro1->getAutor()->getNombre() . "<br>";
+        echo "Libro: " . $libro2->getTitulo() . " | Precio: " . $libro2->getPrecio() . "€ | Autor: " . $libro2->getAutor()->getNombre() . "<br>";
+        
+        $autorAna->setNombre("Ana López García");
+        echo "--- Tras actualizar el nombre del autor ---\n";
+        echo "Libro: " . $libro1->getTitulo() . " | Precio: " . $libro1->getPrecio() . "€ | Autor: " . $libro1->getAutor()->getNombre() . "<br>";
+        echo "Libro: " . $libro2->getTitulo() . " | Precio: " . $libro2->getPrecio() . "€ | Autor: " . $libro2->getAutor()->getNombre() . "<br>";
+
+        $resultadoCambio = $autorAna->setNombre("   ");
+        echo "Intento de cambio a espacios vacíos: " . ($resultadoCambio ? "Aceptado" : "Rechazado") . "\n";
+        echo "--- Tras intento fallido ---\n";
+        echo "Libro 1 - Autor: " . $libro1->getAutor()->getNombre() . "<br>";
+        echo "Libro 2 - Autor: " . $libro2->getAutor()->getNombre() . "<br>";
+    ?>
+</body>
+</html>

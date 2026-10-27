@@ -2,7 +2,7 @@
 
 class Autor {
     private string $nombre;
-
+    // El contructor siempre va público si no es una clase abstracta
     public function __construct(string $nombre) {
         $nombreSinEspacios = trim($nombre);
         if ($nombreSinEspacios === '') {
@@ -55,5 +55,5 @@ class Libro {
         return $this->autor;
     }
 }
-
+    //Hacer esquema para estudiar y para aclarar conceptos
 ?>
