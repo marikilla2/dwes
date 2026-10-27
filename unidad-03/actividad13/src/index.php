@@ -1,6 +1,7 @@
 <?php
 
 include __DIR__ . '/ej13.php';
+//También era con una tabla y opcionalmente con un array
 
 echo Tarifa::IVA . "%" . "<br>";
 $tarifa1 = Tarifa::calcularConIva(100);
@@ -10,12 +11,6 @@ echo $tarifa2 . "<br>";
 $tarifa3 = Tarifa::calcularConIva(0);
 echo $tarifa3 . "<br>";
 
-try{
-   echo Tarifa::calcularConIva(-5); 
-}catch(InvalidArgumentException $e){
-    throw new InvalidArgumentException("Error: " . $e);
-}
-
 /*
 Porque no estamos creando una nueva instancia de Tarifa ya que con constantes no es necesario.
 Porque estamos usando una constante y con una constante se usa self:: o nombreClase::
@@ -24,3 +19,21 @@ No puede reasignarse la constante durante la ejecución porque se cambiaría el 
 */
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+    try{
+    echo Tarifa::calcularConIva(-5); 
+    }catch(InvalidArgumentException $e){
+        throw new InvalidArgumentException("Error: " . $e);
+    }   
+    ?>
+</body>
+</html>
