@@ -2,7 +2,7 @@
 
 abstract class Figura{
 
-    abstract public function calcularArea(): float;
+    abstract public function calcularArea(): float; //Es obligatorio sobreescribir los métodos abstractos
 }
 
 class Rectangulo extends Figura{

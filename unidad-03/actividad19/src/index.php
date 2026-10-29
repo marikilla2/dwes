@@ -51,7 +51,7 @@ $sumaTotal = 0.0;
 
     <h3>Suma Total Conjunta: <?php echo number_format($sumaTotal, 2, ',', '.') . ' €'; ?></h3>
 
-    <div class="success-box">
+    <div>
         <h3>Pruebas de Excepciones (Validaciones de Entrada):</h3>
         <?php
         // Prueba 1

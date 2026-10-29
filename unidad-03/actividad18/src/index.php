@@ -16,12 +16,12 @@ $sumaAreas = 0.0;
 foreach ($figuras as $figura) {
     $area = obtenerArea($figura);
     $sumaAreas += $area;
-    
+    //El instanceof no sé que hace exactamente pero si figura es un rectángulo hace una cosa y si no hace otra cosa
     $tipo = ($figura instanceof Rectangulo) ? "Área del rectángulo" : "Área del círculo";
-    echo "$tipo: " . number_format($area, 2, ',', '') . "\n";
+    echo "$tipo: " . number_format($area, 2, ',', '') . "<br>";
 }
 
-echo "Suma de áreas: " . number_format($sumaAreas, 2, ',', '') . "\n";
+echo "Suma de áreas: " . number_format($sumaAreas, 2, ',', '') . "<br>";
 
 /*
  * Preguntas teóricas:

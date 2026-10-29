@@ -20,7 +20,7 @@ abstract class Producto {
         return $this->nombre;
     }
 
-    final public function getPrecio(): float {
+    final public function getPrecio(): float { //No se puede reescribir o sobreescribir una clase final y no se puede heredar de ella si es una clase
         return $this->precio;
     }
 
@@ -38,7 +38,8 @@ abstract class Producto {
 class ProductoFisico extends Producto {
     private float $peso;
 
-    public function __construct(string $nombre, float $precio, float $peso) {
+    //Pongo un constructor porque recibe una propiedad del padre desde du constructor
+    public function __construct(string $nombre, float $precio, float $peso) { 
         if ($peso <= 0) {
             throw new InvalidArgumentException("El peso debe ser un valor positivo.");
         }
