@@ -9,15 +9,7 @@ function crearAviso(Notificador $notificador, string $mensaje): string{
 $emailNot = new NotificadorEmail();
 $smsNot = new NotificadorSms();
 
-echo crearAviso($emailNot, "La entrega termina mañana") . "<br>";
-echo crearAviso($smsNot, "La entrega termina mañana") . "<br>";
-
 $array = [$emailNot, $smsNot];
-
-foreach($array as $notificacion){
-    echo crearAviso($notificacion, "La entrega termina mañana") . "<br>";
-}
-
 /*
     Porque las clases implementan la misma interfaz y eso permite que puedan usar la misma función.
     No, la interfaz aporta la función que deben implementar solamente.
@@ -25,3 +17,23 @@ foreach($array as $notificacion){
 */
 
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        echo crearAviso($emailNot, "La entrega termina mañana") . "<br>";
+        echo crearAviso($smsNot, "La entrega termina mañana") . "<br>"; 
+
+        foreach($array as $notificacion){
+            echo crearAviso($notificacion, "La entrega termina mañana") . "<br>";
+        }
+    ?>
+</body>
+</html>
