@@ -4,9 +4,17 @@ abstract class Producto implements Describible{
     private string $nombre;
     private float $precio;
     private Categoria $categoria;
-    private static int $totalCreados;
+    private static int $totalCreados = 0;
 
-    function __construct(string $nombre, float $precio, Categoria $categoria)
+    /**
+     * Crea un nuevo producto y valida sus datos básicos.
+     *
+     * @param string $nombre Nombre descriptivo del producto.
+     * @param float $precio Precio base unitario (no puede ser negativo).
+     * @param Categoria $categoria Categoría asociada al producto.
+     * @throws InvalidArgumentException Si el nombre está vacío o el precio es inferior a 0.
+     */
+    public function __construct(string $nombre, float $precio, Categoria $categoria)
     {
         $nombreSinEspacios = trim($nombre);
         if($nombreSinEspacios === ""){
@@ -17,7 +25,7 @@ abstract class Producto implements Describible{
         $this->precio = $precio;
         $this->categoria = $categoria;
 
-        $this->totalCreados++;
+        self::$totalCreados++;
     }
 
     function getNombre(){
