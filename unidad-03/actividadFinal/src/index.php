@@ -28,6 +28,33 @@ function describir(Describible $elemento): string
 {
     return $elemento->obtenerDescripcion();
 }
+
+echo "--- SECUENCIA DE OPERACIONES CON EL TECLADO ---\n\n";
+echo "1. Stock inicial: " . $teclado->getStock() . " unidades.\n";
+
+try {
+    $teclado->reservar(2);
+    echo "2. Reservar 2 unidades: Se completa la reserva. Stock actual: " . $teclado->getStock() . " unidades.\n";
+} catch (InvalidArgumentException $e) {
+    echo "2. Error: " . $e->getMessage() . "\n";
+}
+
+try {
+    $teclado->reponer(1);
+    echo "3. Reponer 1 unidad: Se completa la reposición. Stock actual: " . $teclado->getStock() . " unidades.\n";
+} catch (InvalidArgumentException $e) {
+    echo "3. Error: " . $e->getMessage() . "\n";
+}
+
+try {
+    $teclado->reservar(5);
+    echo "4. Reservar 5 unidades: Se completa la reserva. Stock actual: " . $teclado->getStock() . " unidades.\n";
+} catch (InvalidArgumentException $e) {
+    echo "4. Intentar reservar 5 unidades:\n";
+    echo "   [RECHAZADO] Excepción capturada: " . $e->getMessage() . "\n";
+    echo "   Stock posterior al fallo: " . $teclado->getStock() . " unidades.\n";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

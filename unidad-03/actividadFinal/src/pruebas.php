@@ -60,6 +60,7 @@ try {
     $p5_capturada = true;
     $p5_msg = $e->getMessage();
 }
+
 $p5_ok = $p5_capturada && ($p5_prod->getStock() === 5);
 printf("[P5] Reservar 6 de 5 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p5_msg, $p5_prod->getStock(), $p5_ok ? 'OK' : 'ERROR');
 
@@ -72,6 +73,7 @@ try {
     $p6_capturada = true;
     $p6_msg = $e->getMessage();
 }
+
 $p6_ok = $p6_capturada && ($p6_prod->getStock() === 5);
 printf("[P6] Reservar 0 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p6_msg, $p6_prod->getStock(), $p6_ok ? 'OK' : 'ERROR');
 
@@ -84,6 +86,7 @@ try {
     $p7_capturada = true;
     $p7_msg = $e->getMessage();
 }
+
 $p7_ok = $p7_capturada && ($p7_prod->getStock() === 5);
 printf("[P7] Reponer -1 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p7_msg, $p7_prod->getStock(), $p7_ok ? 'OK' : 'ERROR');
 
@@ -95,6 +98,7 @@ try {
     $p8_capturada = true;
     $p8_msg = $e->getMessage();
 }
+
 $p8_ok = $p8_capturada;
 printf("[P8] Construir con precio -10 € -> Excepción: '%s' | Resultado: %s\n", $p8_msg, $p8_ok ? 'OK' : 'ERROR');
 
@@ -107,6 +111,7 @@ try {
     $p9_capturada = true;
     $p9_msg = $e->getMessage();
 }
+
 $contadorDespues = Producto::getTotalCreados();
 $p9_ok = $p9_capturada && ($contadorAntes === $contadorDespues);
 printf("[P9] Construir con peso 0 kg -> Excepción: '%s', Creados antes: %d, después: %d | Resultado: %s\n", $p9_msg, $contadorAntes, $contadorDespues, $p9_ok ? 'OK' : 'ERROR');
@@ -119,6 +124,7 @@ try {
     $p10_capturada = true;
     $p10_msg = $e->getMessage();
 }
+
 $p10_ok = $p10_capturada;
 printf("[P10] Construir Categoria '   ' -> Excepción: '%s' | Resultado: %s\n", $p10_msg, $p10_ok ? 'OK' : 'ERROR');
 
