@@ -1,9 +1,15 @@
 <?php
-class ProductoDigital extends Producto{
+final class ProductoDigital extends Producto{
     #[Override]
     public function calcularGastosEnvio(): float
     {
-        throw new \Exception('Not implemented');
+        return 0.0;
     } 
+
+    #[Override]
+    public function obtenerDescripcion(): string
+    {
+        return parent::obtenerDescripcion() . "/Descarga Digital";
+    }
 }
 ?>
