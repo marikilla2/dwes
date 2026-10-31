@@ -81,7 +81,7 @@ try {
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($catalogo->getProductos() as $producto): ?>
+            <?php foreach ($catalogo->getProductos() as $producto) { ?>
                 <tr>
                     <td><?= htmlspecialchars($producto->getNombre()); ?></td>
                     <td><?= htmlspecialchars($producto->getCategoria()->getNombre()); ?></td>
@@ -89,7 +89,7 @@ try {
                     <td><?= number_format($producto->calcularGastosEnvio(), 2, ',', ' '); ?> €</td>
                     <td><?= number_format($producto->calcularTotal(), 2, ',', ' '); ?> €</td>
                 </tr>
-            <?php endforeach; ?>
+            <?php } ?>
         </tbody>
         <tfoot>
             <tr class="total-row">
