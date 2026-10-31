@@ -19,7 +19,7 @@ Este proyecto consiste en una aplicación en PHP desarrollada bajo el paradigma 
    docker compose up -d
    ```
 
-Cada archivo PHP del proyecto tiene una única responsabilidad bien definida:
+### Cada archivo PHP del proyecto tiene una única responsabilidad bien definida:
 
 Describible.php: Interfaz común que establece el contrato del método público obtenerDescripcion(): string.
 
@@ -61,17 +61,18 @@ TARIFA_POR_KG: Constante de clase definida en ProductoFisico con el valor 2.0. R
 
 Producto::$totalCreados: Propiedad estática incrementada dentro del constructor de Producto únicamente tras validar con éxito todos los argumentos, garantizando que solo cuente las instancias construidas correctamente.
 
-4. Tabla de pruebas y validación (pruebas.php)
-   ID Caso de prueba Resultado esperado Resultado observado ¿Coincide?
-   P1 Catálogo vacío 0 productos y valor total de 0,00 € 0 productos; Valor total: 0,00 €Sí
-   P2Catálogo con los 4 productos iniciales4 productos y valor total de 284,40 €4 productos; Valor total: 284,40 €Sí
-   P3Gastos de envío en ProductoDigitalEnvío 0,00 €; Total igual al precio base (40,00 €)Envío: 0,00 €; Total: 40,00 €Sí
-   P4Físico con stock 5: Reservar 5 unidadesSe completa la reserva correctamente; Stock posterior: 0Reserva completada; Stock actual: 0Sí
-   P5Físico con stock 5: Reservar 6 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "No hay suficiente stock"; Stock conservado en 5Sí
-   P6Físico con stock 5: Reservar 0 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "La cantidad a reservar debe ser mayor que 0"; Stock: 5Sí
-   P7Físico con stock 5: Reponer -1 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "La cantidad a reponer debe ser mayor que 0"; Stock: 5Sí
-   P8Intentar construir Producto con precio negativo (-10 €)Lanza InvalidArgumentException; No se crea el objetoExcepción capturada: "El precio no puede ser negativo"; Objeto no instanciadoSí
-   P9Intentar construir ProductoFisico con peso 0 kgLanza InvalidArgumentException; El contador estático conserva su valor anteriorExcepción capturada; El contador $totalCreados no se incrementaSí
-   P10Intentar construir Categoria con espacios (" ")Lanza InvalidArgumentException; No se crea la categoríaExcepción capturada: "El nombre de la categoría no puede estar vacío"Sí
+### Tabla de pruebas y validación (pruebas.php)
+
+ID Caso de prueba Resultado esperado Resultado observado ¿Coincide?
+P1 Catálogo vacío 0 productos y valor total de 0,00 € 0 productos; Valor total: 0,00 €Sí
+P2Catálogo con los 4 productos iniciales4 productos y valor total de 284,40 €4 productos; Valor total: 284,40 €Sí
+P3Gastos de envío en ProductoDigitalEnvío 0,00 €; Total igual al precio base (40,00 €)Envío: 0,00 €; Total: 40,00 €Sí
+P4Físico con stock 5: Reservar 5 unidadesSe completa la reserva correctamente; Stock posterior: 0Reserva completada; Stock actual: 0Sí
+P5Físico con stock 5: Reservar 6 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "No hay suficiente stock"; Stock conservado en 5Sí
+P6Físico con stock 5: Reservar 0 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "La cantidad a reservar debe ser mayor que 0"; Stock: 5Sí
+P7Físico con stock 5: Reponer -1 unidadesLanza InvalidArgumentException; Conserva stock en 5Excepción capturada: "La cantidad a reponer debe ser mayor que 0"; Stock: 5Sí
+P8Intentar construir Producto con precio negativo (-10 €)Lanza InvalidArgumentException; No se crea el objetoExcepción capturada: "El precio no puede ser negativo"; Objeto no instanciadoSí
+P9Intentar construir ProductoFisico con peso 0 kgLanza InvalidArgumentException; El contador estático conserva su valor anteriorExcepción capturada; El contador $totalCreados no se incrementaSí
+P10Intentar construir Categoria con espacios (" ")Lanza InvalidArgumentException; No se crea la categoríaExcepción capturada: "El nombre de la categoría no puede estar vacío"Sí
 
 \*Plantilla generada con Inteligencia Artificial.
