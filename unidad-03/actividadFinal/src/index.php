@@ -29,7 +29,7 @@ function describir(Describible $elemento): string
     return $elemento->obtenerDescripcion();
 }
 
-echo "--- SECUENCIA DE OPERACIONES CON EL TECLADO ---\n\n";
+echo "SECUENCIA DE OPERACIONES CON EL TECLADO";
 echo "1. Stock inicial: " . $teclado->getStock() . " unidades.\n";
 
 try {
