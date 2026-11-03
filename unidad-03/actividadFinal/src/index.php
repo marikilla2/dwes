@@ -1,10 +1,7 @@
 <?php
 require_once __DIR__ . '/Describible.php';
-
 require_once __DIR__ . '/Categoria.php';
-
 require_once __DIR__ . '/Producto.php';
-
 require_once __DIR__ . '/ProductoFisico.php';
 require_once __DIR__ . '/ProductoDigital.php';
 require_once __DIR__ . '/Catalogo.php';

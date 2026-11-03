@@ -22,7 +22,7 @@ $catVacio = new Catalogo();
 $p1_num = $catVacio->contarProductos();
 $p1_val = $catVacio->calcularValorTotal();
 $p1_ok = ($p1_num === 0) && sonIgualesFloat($p1_val, 0.0);
-printf("[P1] Catálogo vacío -> %d productos, valor %.2f € | Resultado: %s\n", $p1_num, $p1_val, $p1_ok ? 'OK' : 'ERROR');
+printf("[P1] Catálogo vacío -> %d productos, valor %.2f € | Resultado: %s", $p1_num, $p1_val, $p1_ok ? 'OK' : 'ERROR');
 
 $catComp = new Catalogo();
 $catPerifericos = new Categoria("Periféricos");
@@ -37,19 +37,19 @@ $catComp->anadirProducto(new ProductoDigital("Curso PHP", 40.0, $catFormacion));
 $p2_num = $catComp->contarProductos();
 $p2_val = $catComp->calcularValorTotal();
 $p2_ok = ($p2_num === 4) && sonIgualesFloat($p2_val, 284.40);
-printf("[P2] Catálogo de 4 productos -> %d productos, valor conjunto %.2f € | Resultado: %s\n", $p2_num, $p2_val, $p2_ok ? 'OK' : 'ERROR');
+printf("[P2] Catálogo de 4 productos -> %d productos, valor conjunto %.2f € | Resultado: %s", $p2_num, $p2_val, $p2_ok ? 'OK' : 'ERROR');
 
 $pDig = new ProductoDigital("Curso PHP", 40.0, $catFormacion);
 $p3_envio = $pDig->calcularGastosEnvio();
 $p3_total = $pDig->calcularTotal();
 $p3_ok = sonIgualesFloat($p3_envio, 0.0) && sonIgualesFloat($p3_total, 40.0);
-printf("[P3] Producto digital -> Envío %.2f €, Total %.2f € | Resultado: %s\n", $p3_envio, $p3_total, $p3_ok ? 'OK' : 'ERROR');
+printf("[P3] Producto digital -> Envío %.2f €, Total %.2f € | Resultado: %s", $p3_envio, $p3_total, $p3_ok ? 'OK' : 'ERROR');
 
 $p4_prod = new ProductoFisico("Teclado Test", 35.0, $catPerifericos, 0.5, 5);
 $p4_prod->reservar(5);
 $p4_stock = $p4_prod->getStock();
 $p4_ok = ($p4_stock === 0);
-printf("[P4] Reservar 5 de 5 -> Stock posterior: %d | Resultado: %s\n", $p4_stock, $p4_ok ? 'OK' : 'ERROR');
+printf("[P4] Reservar 5 de 5 -> Stock posterior: %d | Resultado: %s", $p4_stock, $p4_ok ? 'OK' : 'ERROR');
 
 $p5_prod = new ProductoFisico("Teclado Test", 35.0, $catPerifericos, 0.5, 5);
 $p5_capturada = false;
@@ -62,7 +62,7 @@ try {
 }
 
 $p5_ok = $p5_capturada && ($p5_prod->getStock() === 5);
-printf("[P5] Reservar 6 de 5 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p5_msg, $p5_prod->getStock(), $p5_ok ? 'OK' : 'ERROR');
+printf("[P5] Reservar 6 de 5 -> Excepción: '%s', Stock: %d | Resultado: %s", $p5_msg, $p5_prod->getStock(), $p5_ok ? 'OK' : 'ERROR');
 
 $p6_prod = new ProductoFisico("Teclado Test", 35.0, $catPerifericos, 0.5, 5);
 $p6_capturada = false;
@@ -75,7 +75,7 @@ try {
 }
 
 $p6_ok = $p6_capturada && ($p6_prod->getStock() === 5);
-printf("[P6] Reservar 0 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p6_msg, $p6_prod->getStock(), $p6_ok ? 'OK' : 'ERROR');
+printf("[P6] Reservar 0 -> Excepción: '%s', Stock: %d | Resultado: %s", $p6_msg, $p6_prod->getStock(), $p6_ok ? 'OK' : 'ERROR');
 
 $p7_prod = new ProductoFisico("Teclado Test", 35.0, $catPerifericos, 0.5, 5);
 $p7_capturada = false;
@@ -88,7 +88,7 @@ try {
 }
 
 $p7_ok = $p7_capturada && ($p7_prod->getStock() === 5);
-printf("[P7] Reponer -1 -> Excepción: '%s', Stock: %d | Resultado: %s\n", $p7_msg, $p7_prod->getStock(), $p7_ok ? 'OK' : 'ERROR');
+printf("[P7] Reponer -1 -> Excepción: '%s', Stock: %d | Resultado: %s", $p7_msg, $p7_prod->getStock(), $p7_ok ? 'OK' : 'ERROR');
 
 $p8_capturada = false;
 $p8_msg = "";
@@ -100,7 +100,7 @@ try {
 }
 
 $p8_ok = $p8_capturada;
-printf("[P8] Construir con precio -10 € -> Excepción: '%s' | Resultado: %s\n", $p8_msg, $p8_ok ? 'OK' : 'ERROR');
+printf("[P8] Construir con precio -10 € -> Excepción: '%s' | Resultado: %s", $p8_msg, $p8_ok ? 'OK' : 'ERROR');
 
 $contadorAntes = Producto::getTotalCreados();
 $p9_capturada = false;
@@ -114,7 +114,7 @@ try {
 
 $contadorDespues = Producto::getTotalCreados();
 $p9_ok = $p9_capturada && ($contadorAntes === $contadorDespues);
-printf("[P9] Construir con peso 0 kg -> Excepción: '%s', Creados antes: %d, después: %d | Resultado: %s\n", $p9_msg, $contadorAntes, $contadorDespues, $p9_ok ? 'OK' : 'ERROR');
+printf("[P9] Construir con peso 0 kg -> Excepción: '%s', Creados antes: %d, después: %d | Resultado: %s", $p9_msg, $contadorAntes, $contadorDespues, $p9_ok ? 'OK' : 'ERROR');
 
 $p10_capturada = false;
 $p10_msg = "";
@@ -126,6 +126,6 @@ try {
 }
 
 $p10_ok = $p10_capturada;
-printf("[P10] Construir Categoria '   ' -> Excepción: '%s' | Resultado: %s\n", $p10_msg, $p10_ok ? 'OK' : 'ERROR');
+printf("[P10] Construir Categoria '   ' -> Excepción: '%s' | Resultado: %s", $p10_msg, $p10_ok ? 'OK' : 'ERROR');
 
-echo "\n=== FIN DE LAS PRUEBAS ===\n";
+echo " FIN DE LAS PRUEBAS ";
