@@ -17,11 +17,21 @@ $urgencia = '';
 $errores = [];
 $exito = false;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $equipo = $_POST['equipo'] ?? '';
-    $averia = $_POST['averia'] ?? '';
-    $urgencia = $_POST['urgencia'] ?? '';
+function obtener_post(string $campo): string {
+    if (isset($_POST[$campo])) {
+        return htmlspecialchars(trim($_POST[$campo]), ENT_QUOTES, 'UTF-8');
+    }
+    return '';
+}
 
+function validar_formulario(
+    string &$equipo, 
+    string &$averia, 
+    string &$urgencia, 
+    array &$errores, 
+    array $equipos_permitidos, 
+    array $urgencias_permitidas
+): bool {
     if ($equipo === '') {
         $errores['equipo'] = 'Debes seleccionar un equipo.';
     } elseif (!array_key_exists($equipo, $equipos_permitidos)) {
@@ -29,10 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $equipo = '';
     }
 
-    $averia_trim = trim($averia);
-    $longitud_averia = mb_strlen($averia_trim);
-
-    if ($averia_trim === '') {
+    $longitud_averia = mb_strlen($averia);
+    if ($averia === '') {
         $errores['averia'] = 'La descripción de la avería es obligatoria.';
     } elseif ($longitud_averia < 15 || $longitud_averia > 500) {
         $errores['averia'] = "La avería debe tener entre 15 y 500 caracteres (longitud actual: $longitud_averia).";
@@ -44,45 +52,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores['urgencia'] = 'La opción de urgencia seleccionada no es válida.';
         $urgencia = '';
     }
+
+    return empty($errores);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $equipo   = obtener_post('equipo');
+    $averia   = obtener_post('averia');
+    $urgencia = obtener_post('urgencia');
+
+    if (validar_formulario($equipo, $averia, $urgencia, $errores, $equipos_permitidos, $urgencias_permitidas)) {
+        $exito = true;
+    }
 }
 
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Solicitud de Reparación</title>
 </head>
 <body>
-    <form action="reparacion.php" method="post">
-        <label for="equipo">Equipo</label>
-            <select name="equipo" id="equipo" required>
-                <option value="portatil">Portatil</option>
-                <option value="sobremesa">Sobremesa</option>
-                <option value="impresora">Impresora</option>
-            </select>
-            <?php if (isset($errores['equipo'])): ?>
-                <span><?= escape($errores['equipo']) ?></span>
-            <?php endif; ?> 
-        <label for="averia">Averia</label>
-            <input type="textarea"required min="15" max="500">
-        <label for="urgencia">Urgencia</label>
-            <input type="radio" name="urgencia" id="urgencia" >
-    </form>
-    
-    <!-- A partir de aquí lo he buscado, lo anterior lo he hecho yo -->
 
     <h2>Formulario de Solicitud de Reparación</h2>
 
     <?php if ($exito): ?>
         <div>
             <h3>Solicitud comprobada</h3>
-            <p><strong>Equipo:</strong> <?= htmlspecialchars($equipos_permitidos[$equipo]) ?></p>
-            <p><strong>Descripción de la avería:</strong> <?= nl2br(htmlspecialchars(trim($averia))) ?></p>
-            <p><strong>Urgencia:</strong> <?= htmlspecialchars($urgencias_permitidas[$urgencia]) ?></p>
+            <p><strong>Equipo:</strong> <?= $equipos_permitidos[$equipo] ?></p>
+            <p><strong>Descripción de la avería:</strong> <?= nl2br($averia) ?></p>
+            <p><strong>Urgencia:</strong> <?= $urgencias_permitidas[$urgencia] ?></p>
         </div>
     <?php else: ?>
 
@@ -99,15 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endforeach; ?>
                 </select>
                 <?php if (isset($errores['equipo'])): ?>
-                    <br><strong><?= htmlspecialchars($errores['equipo']) ?></strong>
+                    <br><strong style="color:red;"><?= $errores['equipo'] ?></strong>
                 <?php endif; ?>
             </p>
 
             <p>
                 <label for="averia">Avería (entre 15 y 500 caracteres):</label><br>
-                <textarea name="averia" id="averia" rows="5" cols="40"><?= htmlspecialchars($averia) ?></textarea>
+                <textarea name="averia" id="averia" rows="5" cols="40"><?= $averia ?></textarea>
                 <?php if (isset($errores['averia'])): ?>
-                    <br><strong><?= htmlspecialchars($errores['averia']) ?></strong>
+                    <br><strong style="color:red;"><?= $errores['averia'] ?></strong>
                 <?php endif; ?>
             </p>
             
@@ -120,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                 <?php endforeach; ?>
                 <?php if (isset($errores['urgencia'])): ?>
-                    <br><strong><?= htmlspecialchars($errores['urgencia']) ?></strong>
+                    <br><strong style="color:red;"><?= $errores['urgencia'] ?></strong>
                 <?php endif; ?>
             </p>
 
