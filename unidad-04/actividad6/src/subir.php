@@ -15,7 +15,7 @@ function guardarImagen(array $archivo, string $carpeta): string
     if ($archivo['error'] === UPLOAD_ERR_NO_FILE) {
         throw new RuntimeException('Selecciona una imagen.');
     }
-
+    //Importante el tamaño del archivo
     if ($archivo['error'] === UPLOAD_ERR_INI_SIZE
         || $archivo['error'] === UPLOAD_ERR_FORM_SIZE) {
         throw new RuntimeException('El archivo supera el límite de subida.');
@@ -30,7 +30,7 @@ function guardarImagen(array $archivo, string $carpeta): string
         || !is_int($archivo['size']) || !is_string($archivo['tmp_name'])) {
         throw new RuntimeException('Los datos del archivo no son válidos.');
     }
-
+    //Importante tamaño entre los valores permitidos
     if ($archivo['size'] <= 0 || $archivo['size'] > 2 * 1024 * 1024) {
         throw new RuntimeException('La imagen debe ocupar más de 0 bytes y hasta 2 MiB.');
     }
@@ -39,6 +39,7 @@ function guardarImagen(array $archivo, string $carpeta): string
         throw new RuntimeException('No se ha recibido una subida válida.');
     }
 
+    //Importante el tipo de fichero
     $permitidos = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $tipo = $finfo->file($archivo['tmp_name']);
