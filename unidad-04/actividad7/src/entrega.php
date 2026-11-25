@@ -2,18 +2,13 @@
 declare(strict_types=1);
 
 const CARPETA_ALMACEN = '/var/www/almacen-ud04';
-const TAMANO_MAXIMO = 3 * 1024 * 1024; // 3 MiB
+const TAMANO_MAXIMO = 3 * 1024 * 1024;
 
 function e(string $texto): string
 {
     return htmlspecialchars($texto, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-/**
- * Valida el título recibido y lo devuelve sin espacios en los extremos.
- *
- * @throws RuntimeException Si falta, no es texto o no mide entre 5 y 80 caracteres.
- */
 function validarTitulo(mixed $titulo): string
 {
     if (!is_string($titulo)) {
@@ -34,12 +29,6 @@ function validarTitulo(mixed $titulo): string
     return $titulo;
 }
 
-/**
- * Comprueba la memoria recibida, pero NO la guarda.
- * Devuelve la ruta temporal para moverla después, si todo el formulario es válido.
- *
- * @throws RuntimeException Si el archivo no es un único PDF válido de hasta 3 MiB.
- */
 function validarMemoria(mixed $archivo): string
 {
     if (!is_array($archivo)) {
@@ -47,8 +36,7 @@ function validarMemoria(mixed $archivo): string
             'No se ha recibido el archivo. Revisa el formulario y los límites de PHP.'
         );
     }
-
-    // Si se enviaran varios archivos, 'error' sería un array y no un entero.
+    
     if (!isset($archivo['error']) || !is_int($archivo['error'])) {
         throw new RuntimeException('Envía un único archivo PDF.');
     }
@@ -79,7 +67,6 @@ function validarMemoria(mixed $archivo): string
         throw new RuntimeException('No se ha recibido una subida válida.');
     }
 
-    // Tipo real del contenido: no nos fiamos de la extensión ni de $archivo['type'].
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $tipo = $finfo->file($archivo['tmp_name']);
 
@@ -90,11 +77,6 @@ function validarMemoria(mixed $archivo): string
     return $archivo['tmp_name'];
 }
 
-/**
- * Mueve el PDF ya validado al almacén con un nombre generado.
- *
- * @throws RuntimeException Si el almacén no está listo o no se puede mover.
- */
 function guardarMemoria(string $rutaTemporal, string $carpeta): string
 {
     if (!is_dir($carpeta) || !is_writable($carpeta)) {
@@ -116,17 +98,15 @@ $titulo = '';
 $nombreGuardado = '';
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
-    // Si se supera post_max_size, PHP vacía $_POST y $_FILES.
+    
     if ($_POST === [] && $_FILES === [] && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) {
         $errores['general'] = 'El envío supera el tamaño máximo que admite el servidor.';
     } else {
-        // Para conservar el título en el formulario aunque sea incorrecto.
         $tituloRecibido = $_POST['titulo'] ?? '';
         if (is_string($tituloRecibido)) {
             $titulo = trim($tituloRecibido);
         }
-
-        // Se validan los dos campos, aunque el primero falle, para mostrar todos los errores.
+        
         try {
             $titulo = validarTitulo($_POST['titulo'] ?? null);
         } catch (RuntimeException $excepcion) {
@@ -140,7 +120,6 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             $errores['memoria'] = $excepcion->getMessage();
         }
 
-        // Solo se guarda si TODO es válido: un título incorrecto no deja ningún archivo.
         if ($errores['titulo'] === '' && $errores['memoria'] === '') {
             try {
                 $nombreGuardado = guardarMemoria($rutaTemporal, CARPETA_ALMACEN);
